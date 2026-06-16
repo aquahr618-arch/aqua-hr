@@ -1,0 +1,8 @@
+# never commit secrets or real employee data
+.streamlit/secrets.toml
+*.xlsx
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
