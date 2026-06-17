@@ -4,7 +4,7 @@ from lib import db
 
 
 def render():
-    st.markdown("## 🧾 Audit Log")
+    st.markdown("##  Audit Log")
     st.caption("Every change to employee data is recorded here — who, what, when, and the before/after values.")
 
     c1, c2, c3 = st.columns(3)

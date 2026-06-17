@@ -185,7 +185,7 @@ def main():
     if not url:
         sys.exit("Set DATABASE_URL before running without --dry-run.")
     insert_all(url, emp_rows, leave, payroll, documents)
-    print("\n✅ Migration complete.")
+    print("\n Migration complete.")
 
 
 if __name__ == "__main__":

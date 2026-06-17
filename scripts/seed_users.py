@@ -45,4 +45,4 @@ with conn, conn.cursor() as cur:
         (username, full_name, email, pw_hash, role),
     )
 conn.close()
-print(f"\n✅ Created {role} login '{username}'. You can now sign in to the app.")
+print(f"\n Created {role} login '{username}'. You can now sign in to the app.")
