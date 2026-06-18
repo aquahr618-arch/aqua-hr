@@ -23,11 +23,11 @@ def mask(value, visible=4):
 
 
 # ---------------------------------------------------------------- field input
-def _render_input(col, value):
+def _render_input(col, value, prefix="f"):
     """Render the right Streamlit widget for one column, return its value."""
     label = col["label"]
     ctype = col.get("type", "text")
-    key = f"f_{col['name']}"
+    key = f"{prefix}_{col['name']}"
 
     if ctype == "employee":
         emp = db.get_employee_map()
@@ -109,7 +109,7 @@ def crud_page(table, columns, title, icon=""):
         with st.form(f"add_{table}", clear_on_submit=True):
             new_vals = {}
             for c in columns:
-                new_vals[c["name"]] = _render_input(c, None)
+                new_vals[c["name"]] = _render_input(c, None, prefix=f"add_{table}")
             if st.form_submit_button("Save new record"):
                 cols = list(new_vals.keys())
                 placeholders = ", ".join(["%s"] * len(cols))
@@ -133,7 +133,7 @@ def crud_page(table, columns, title, icon=""):
             with st.form(f"edit_{table}"):
                 edit_vals = {}
                 for c in columns:
-                    edit_vals[c["name"]] = _render_input(c, current.get(c["name"]))
+                    edit_vals[c["name"]] = _render_input(c, current.get(c["name"]), prefix=f"edit_{table}")
                 c1, c2 = st.columns(2)
                 save = c1.form_submit_button("Update record")
                 delete = c2.form_submit_button("Delete", type="secondary",
